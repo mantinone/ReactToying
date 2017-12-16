@@ -983,7 +983,7 @@ var HelloMessage = function (_React$Component) {
 }(_react2.default.Component);
 
 var mountNode = document.getElementById('app');
-ReactDom.render(_react2.default.createElement(HelloMessage, { name: "Max" }), mountNode);
+_reactDom2.default.render(_react2.default.createElement(HelloMessage, { name: "Max" }), mountNode);
 
 /***/ }),
 /* 15 */
