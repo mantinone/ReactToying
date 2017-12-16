@@ -8,4 +8,4 @@ class HelloMessage extends React.Component {
 }
 
 var mountNode = document.getElementById('app')
-ReactDom.render( <HelloMessage name="Max" />, mountNode )
+ReactDOM.render( <HelloMessage name="Max" />, mountNode )
