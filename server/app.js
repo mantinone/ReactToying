@@ -6,7 +6,11 @@ let testData = {
   array: [ 'Stuff', 'Things', 'A list', 'Hi Mom', "I'm using React"]
   }
 
-app.get('/', (request, response) => response.send("Now we're thinking with Express"))
+app.use( express.static('dist'))
+
+app.get('/', (request, response) => {
+  response.send("Express time")
+})
 
 app.get( '/data', (request, response) => response.send( testData ))
 
