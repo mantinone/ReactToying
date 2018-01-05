@@ -961,20 +961,60 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var HelloMessage = function (_React$Component) {
   _inherits(HelloMessage, _React$Component);
 
-  function HelloMessage() {
+  function HelloMessage(props) {
     _classCallCheck(this, HelloMessage);
 
-    return _possibleConstructorReturn(this, (HelloMessage.__proto__ || Object.getPrototypeOf(HelloMessage)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (HelloMessage.__proto__ || Object.getPrototypeOf(HelloMessage)).call(this, props));
+
+    _this.state = {
+      title: '...Loading'
+    };
+    return _this;
   }
 
   _createClass(HelloMessage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.fetchData();
+    }
+  }, {
+    key: "fetchData",
+    value: function fetchData() {
+      var _this2 = this;
+
+      var options = {
+        method: "GET",
+        mode: 'cors',
+        headers: new Headers({
+          'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
+          'Content-Type': 'application/json'
+        }),
+        credentials: 'same-origin'
+      };
+      fetch('http://localhost:3000/data ').then(function (data) {
+        return data.json();
+      }).then(function (result) {
+        console.log('result', result);
+        _this2.setState({
+          title: result.title
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
         null,
         "Hello ",
-        this.props.name
+        this.props.name,
+        _react2.default.createElement(
+          "p",
+          null,
+          " Welcome to ",
+          this.state.title,
+          " "
+        )
       );
     }
   }]);
